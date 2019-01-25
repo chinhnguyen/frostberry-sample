@@ -1,0 +1,28 @@
+@import "core/common";
+
+html, body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 1.3em;
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  min-width: $content-min-width;
+  min-height: $content-min-height;
+  overflow: hidden;
+  outline: none;
+  display: table;
+}
+
+body > ui-view, body > ui-view > * {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+tr, th, td {
+	outline: none;
+}

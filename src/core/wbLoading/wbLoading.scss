@@ -1,0 +1,20 @@
+.loading-error {
+    text-align: center;
+    font-size: 1.5em;
+    line-height: 2em;
+    color: #ddd;
+    opacity: 0.8;
+
+    .fa {
+        font-size: 2.5em;
+    }
+
+    > * {
+        margin-bottom: 16px;
+    }
+
+    .md-button {
+        font-size: 0.8em;
+        padding: 8px 16px;
+    }
+}

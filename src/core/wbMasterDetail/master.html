@@ -1,0 +1,17 @@
+<div layout="row" layout-align="start stretch" flex>
+  <div class="wb-master stores merchant-stores md-whiteframe-z3 md-margin" layout="column" ng-style="{width: $ctrl.showDetail ? '38%' : '100%'}">
+    <md-toolbar ng-disabled="$ctrl.status==='ok'" layout="row" layout-align="end center">
+      <div ng-transclude="filters"></div>
+      <span flex></span>
+      <div ng-transclude="actions"></div>
+    </md-toolbar>
+    <md-divider></md-divider>
+    <div class="wb-table-header" ng-show="$ctrl.status==='ok'" ng-transclude="header"></div>
+    <div flex layout="row" class="wb-content">
+      <wb-loading status="$ctrl.status" reload="$ctrl.reload()"></wb-loading>
+      <div ng-show="$ctrl.status==='ok'" ng-transclude="content"></div>
+    </div>
+    <ng-include ng-show="$ctrl.status==='ok'&&$ctrl.summary.count>0" src="'views/md-pager.html'" ng-init="params=params;pages=pages" />
+  </div>
+  <div ng-show="$ctrl.showDetail" ng-if="$ctrl.selected" flex layout="column" class="wb-detail md-whiteframe-z3 md-margin" ng-transclude="detail"></div>
+</div>

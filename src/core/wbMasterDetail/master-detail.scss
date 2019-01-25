@@ -1,0 +1,433 @@
+@import '../common';
+
+.wb-master,
+.wb-detail {
+  background-color: $dark-100;
+  margin: $guideline/2;
+  margin-bottom: 0;
+
+  md-toolbar {
+    padding: $guideline/2;
+    margin: 0;
+    background-color: $dark-200;
+    font-size: 0.9em;
+    min-height: 3.4em;
+
+    md-input-container {
+      padding: 0;
+      margin-right: $guideline*2;
+      margin-bottom: 0;
+    }
+
+    .md-button {
+      min-width: 4.5em;
+      margin-right: 0;
+
+      &.icon {
+        min-width: 3em;
+
+        .fa {
+          font-size: 1.25em;
+          line-height: 1.5em;
+        }
+      }
+
+      &:first-of-type {
+        margin-left: 0;
+      }
+    }
+  }
+
+  .md-button {
+    margin: 0 $guideline;
+  }
+
+  md-divider {
+    border-top-color: $dark-500;
+  }
+
+  .wb-content {
+    padding: 0;
+    margin: 0;
+  }
+
+  detail-content,
+  detail-content > *,  {
+    height: 100%;
+    width: 100%;
+  }
+
+}
+
+.wb-master {
+  min-width: 20em;
+
+  &.kl-printtpl-master {
+    min-width: 10em;
+  }
+
+  md-content {
+    z-index: 1;
+    // margin-top: -52px;
+    margin-bottom: 0px;
+  }
+
+  // Hide the header of master table data content
+  .wb-table-content {
+    // margin-top: 0px;
+
+    thead {
+      opacity: 0;
+    }
+
+    &.report-shift {
+      margin-top: 0;
+
+      thead {
+        display: none;
+      }
+    }
+  }
+
+  .wb-table-footer {
+    z-index: 0;
+
+    thead {
+      opacity: 0
+    }
+  }
+}
+
+.wb-content {
+  overflow-y: auto;
+}
+
+.wb-detail {
+  detail-toolbar {
+    width: 100%;
+  }
+  .md-headline {
+    // background-color: $lime-500-20;
+    font-size: 1.25em;
+    padding: $guideline/2 0.15em;
+  }
+
+  md-tabs {
+    padding: 0;
+  }
+
+  md-list md-list-item {
+    margin: 0 0.5em;
+  }
+}
+
+img.watermark {
+  width: 50%;
+  height: 50%;
+  opacity: 0.1;
+  filter: grayscale(100%);
+}
+
+.currency {
+  text-align: right;
+}
+
+.form-h-sep {
+  width: 2em;
+  height: 0;
+}
+
+.form-v-sep {
+  width: 0em;
+  min-height: 2em;
+}
+
+/* Master Table */
+
+table.wb-table {
+  table-layout: fixed;
+  width: 100%;
+  height: 0;
+  border-collapse: collapse;
+
+  th {
+    font-size: 0.9em;
+    color: $teal-500;
+    text-transform: uppercase;
+    padding: 0.5em;
+    white-space: nowrap;
+    font-weight: normal;
+    text-align: left;
+    height: 2em;
+  }
+
+  tr {
+    border-bottom: 1px solid rgba(41, 56, 70, 0.1);
+
+    &.warn {
+      color: $warn-500;
+    }
+  }
+
+  tr.voided {
+    color: $warn-500;
+  }
+
+  td {
+    font-size: 0.85em;
+    line-height: 1.2em;
+    padding: 0.5em;
+    height: 2em;
+
+    md-input-container {
+      margin: 0;
+      padding: 0;
+    }
+
+    .md-errors-spacer {
+      display: none;
+    }
+
+    input.currency {
+      text-align: right;
+    }
+
+    &.editing {
+      padding: 6px 8px;
+    }
+  }
+
+  tfoot {
+    font-size: 1.2em;
+    color: $teal-500;
+    text-transform: uppercase;
+    background-color: $dark-100;
+  }
+
+  tbody tr:hover {
+    background-color: rgba(41, 56, 70, 0.4);
+  }
+
+  tbody tr.selected {
+    background-color: $teal-500;
+  }
+
+  &.cash-report,
+  &.report-shift {
+    width: 32em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+
+    tr {
+      border-bottom: none;
+
+      td {
+        font-size: 1em;
+        opacity: 0.4;
+        padding: 0.5em 8px;
+      }
+
+      td.col-value {
+        text-align: right;
+      }
+    }
+
+    tr.highlight {
+      td {
+        font-size: 1.2em;
+        opacity: 0.8;
+        font-weight: bold;
+      }
+    }
+
+    tr.superhighlight {
+      td {
+        font-size: 1.4em;
+        opacity: 1;
+        font-weight: bold;
+      }
+    }
+
+    tr.normal,
+    tr.sub {
+      td.has-value {
+        opacity: 0.8;
+      }
+    }
+
+    tr.formula td:first-of-type span {
+      white-space: nowrap;
+      font-style: italic;
+      opacity: 0.8;
+
+      &:before {
+        content: '(';
+      }
+
+      &:after {
+        content: ')';
+      }
+    }
+
+    tr.empty {
+      opacity: 0;
+    }
+  }
+
+  $col-small-w: 7.5em;
+
+  .col {
+    min-width: $col-small-w;
+    max-width: 2*$col-small-w;
+  }
+
+  .col-boolean {
+    width: $col-small-w;
+    text-align: center;
+  }
+
+  .col-int {
+    width: $col-small-w;
+    text-align: right;
+  }
+
+  .col-currency {
+    width: 1.5*$col-small-w;
+    min-width: 1.5*$col-small-w;
+    text-align: right !important;
+  }
+
+  .col-free {
+    width: auto;
+    min-width: $col-small-w;
+    max-width: none;
+  }
+
+  .col-check {
+    width: 3em;
+    text-align: center;
+  }
+
+  .col-hour {
+    width: 0.8*$col-small-w;
+    min-width: 0.7*$col-small-w;
+    text-align: center;
+  }
+
+  .col-date {
+    width: 0.9*$col-small-w;
+    min-width: 0.9*$col-small-w;
+    text-align: center;
+  }
+
+  .col-actions {
+    width: $col-small-w;
+    min-width: $col-small-w;
+    text-align: right;
+  }
+
+  .col-selections {
+    text-align: right;
+  }
+
+  $action-button-size: 36px;
+
+  .col-actions .md-button {
+    margin: 0;
+    margin-right: 0.5em;
+    max-width: $action-button-size;
+    max-height: $action-button-size;
+    min-width: $action-button-size;
+    min-height: $action-button-size;
+
+    .fa {
+      font-size: 0.85em;
+    }
+  }
+
+  .col-gc-status {
+    text-align: center;
+  }
+
+  .col-pt-sub {
+    font-style: italic;
+    opacity: 0.5;
+    font-size: 0.8em;
+  }
+
+  .col-currency-sub {
+    font-style: italic;
+    opacity: 0.5;
+    font-size: 0.8em;
+    text-align: right !important;
+  }
+
+  .col-money {
+    text-align: right;
+  }
+
+  .col-small {
+    max-width: 0.3*$col-small-w;
+  }
+
+  .col-phone {
+    width: 9em;
+  }
+
+  .col-name {
+    width: 10em;
+  }
+
+  /* items*/
+  .col-it-hidden {
+    width: 15em;
+  }
+
+  /* orders */
+  // .col-ord-total { width: 9em; text-align: right;}
+  /* report */
+  .col-report-shift {
+    width: 4em;
+    text-align: left;
+  }
+
+  .col-type {
+    width: 6em;
+  }
+
+  // .col-report-type {width: 10em;}
+  // .col-report-count {width: 9em; text-align: right; }
+  // .col-report-tip {width: 13.5em; text-align: right; }
+  // .col-report-total {width: 15em; text-align: right; }
+  // .col-report-maintotal {text-align: right; width: 20em; padding-right: 7.5em; }
+  // .col-ord-shift {width: $col-small-w; text-align: left; }
+  // .col-ord-name {width: 13em;}
+  // .col-ord-type {width: 9em;}
+  // .col-ord-trans {width: 10em; text-align: right; padding-right: 6em;}
+  // .col-ord-digits {width: $col-small-w; text-align: right; }
+  // .col-ord-tip {width: 8em; text-align: right; padding-right: 4em;}
+  // .col-ord-sale-amount {width: $col-small-w; text-align: right; padding-right: 2.5em; }
+  // .col-ord-table-opened {width: 9em; text-align: right; }
+  // .col-ord-table-closed {width: 9em; text-align: right; }
+  // .col-ord-tabel-name {width: $col-small-w; text-align: right; }
+  // .col-ord-opening-time {width: $col-small-w; text-align: right;}
+  // .col-ord-closing-time {width: $col-small-w; text-align: right;}
+  // .col-ord-guests {width: $col-small-w; text-align: right; }
+  // .col-ord-sale-amount {width: 9em; text-align: right;}
+  // .col-ord-date {width: $col-small-w; text-align: right; }
+  // .col-ord-deivce {width: 15em; text-align: right; }
+  // .col-ord-amount {width: $col-small-w; text-align: right;}
+  // /* Timecard Report */
+  // .col-ord-date {width: $col-small-w; text-align: left; }
+  // .col-ord-clock-in-time {width: $col-small-w;}
+  // .col-ord-clock-out-time {width: $col-small-w;}
+  // .col-ord-back-time {width: $col-small-w;}
+  // .col-ord-break-time {width: $col-small-w;}
+  // .col-ord-reason {width: 3*$col-small-w;}
+  // .col-ord-payable-hours {width: $col-small-w;}
+  // .col-ord-non-payable-hours {width: $col-small-w;}
+  // .col-ord-total-hours {width: $col-small-w;}
+  // .col-ord-payrate {width: $col-small-w;}
+  // .col-ord-pay {width: $col-small-w;}
+}

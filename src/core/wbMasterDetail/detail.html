@@ -1,0 +1,14 @@
+<div flex layout="column" ng-disabled="$ctrl.submitting">
+  <md-toolbar layout="row" layout-align="center center" ng-transclude="toolbar">
+    <div flex layout="row">
+      <detail-save-button></detail-save-button>
+      <detail-delete-button></detail-delete-button>
+    </div>
+    <detail-close-button></detail-close-button>
+  </md-toolbar>
+  <md-divider></md-divider>
+  <div flex layout="column">
+    <wb-loading status="$ctrl.status" reload="$ctrl.reload()"></wb-loading>
+    <div flex ng-show="$ctrl.status==='ok'" layout="row" class="wb-no-margin" ng-transclude="content"></div>
+  </div>
+</div>

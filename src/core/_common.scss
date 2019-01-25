@@ -1,0 +1,39 @@
+@import "~bourbon/core/bourbon";
+
+$guideline: 0.5em;
+$content-min-width: 24em;
+$content-min-height: 32em;
+$sidenav-width: 16em;
+
+$dark-100: #465563;
+$dark-200: #445665;
+$dark-400: #344656;
+$dark-500: #293846;
+$teal-50: #E0F2F1;
+$teal-100: #B2DFDB;
+$teal-200: #80CBC4;
+$teal-300: #4DB6AC;
+$teal-400: #26A69A;
+$teal-500: #009688;
+$teal-600: #00897B;
+$teal-700: #00796B;
+$teal-800: #00695C;
+$teal-900: #004D40;
+
+$warn-500: #FF5722;
+
+$teal-light-200: rgba(128, 203, 196, 0.3);
+
+$line-color: #5C6975;
+$disabled-color: #5C6975;
+
+$error-500: #dd2c00;
+
+.form-err-message {
+  color: $error-500;
+  font-size: 0.9em;
+  &::before {
+    content: "(*) "
+  }
+}
+
