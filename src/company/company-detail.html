@@ -1,0 +1,30 @@
+<wb-detail>
+  <detail-toolbar flex layout="row">
+    <div flex layout="row">
+      <detail-save-button></detail-save-button>
+      <detail-delete-button></detail-delete-button>
+    </div>
+    <detail-close-button></detail-close-button>
+  </detail-toolbar>
+  <detail-content>
+    <form autocomplete="off" name="$ctrl.$form" layout="column">
+      <md-content class="md-padding">
+        <div layout-sm="column" layout-gt-sm="row">
+          <md-input-container flex>
+            <label>Company ID</label>
+            <input name="id" ng-disabled="true" type="text" ng-model="$ctrl.current.id"></input>
+          </md-input-container>
+          <span hide-sm class="form-h-sep"></span>
+          <md-input-container flex>
+            <label>Company Name</label>
+            <input name="name" required type="text" ng-model="$ctrl.current.name" md-maxlength="50" maxlength="50"></input>
+            <div ng-show="$ctrl.$form.name.$dirty" ng-messages="$ctrl.$form.name.$error">
+              <div ng-message="required">This field is required.</div>
+              <div ng-message="md-maxlength">The name is too long.</div>
+            </div>
+          </md-input-container>
+        </div>
+      </md-content>
+    </form>
+  </detail-content>
+</wb-detail>

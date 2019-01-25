@@ -1,7 +1,7 @@
 import template from './wbLoading.html'
 import './wbLoading.scss'
 
-class WbLoading {
+/*@ngInject*/ class WbLoading {
   constructor() {
     this.restrict = 'E'
     this.replace = true
@@ -14,7 +14,7 @@ class WbLoading {
     }
   }
 
-  link($scope) {
+  /*@ngInject*/ link($scope) {
     $scope.errorMessage = $scope.errorMessage || `Something went wrong while loading data.`
     $scope.emptyMessage = $scope.emptyMessage || `No matching data could be loaded.`
   }

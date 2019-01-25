@@ -56,7 +56,6 @@
     height: 100%;
     width: 100%;
   }
-
 }
 
 .wb-master {
@@ -103,6 +102,10 @@
 }
 
 .wb-detail {
+  md-content {
+    background: transparent;
+  }
+
   detail-toolbar {
     width: 100%;
   }

@@ -14,18 +14,15 @@
     </table>
   </master-header>
   <master-content>
-    <table ng-table="$ctrl.table" class="wb-table wb-table-content" flex show-filter="false" template-pagination="views/empty.html">
+    <table ng-table="$ctrl.table" class="wb-table wb-table-content" flex show-filter="false">
       <tbody>
         <tr ng-repeat="r in $data" ng-class="{selected:r.id===$ctrl.selected}" ng-click="$ctrl.select(r)">
           <td class="col-free">{{r.name}}</td>
-          <td class="col-free">{{r.layout}}</td>
-          <td class="col-free">{{r.order}}</td>
-          <td class="col-free" ng-hide="$ctrl.selected">{{r.layout.length}}</td>
         </tr>
       </tbody>
     </table>
   </master-content>
   <detail-content>
-    <!-- <employee-detail flex layout="row" id="$ctrl.selected"></store-detail> -->
+    <company-detail flex layout="row" id="$ctrl.selected"></company-detail>
   </detail-content>
 </master-detail>

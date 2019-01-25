@@ -1,13 +1,14 @@
 import * as angular from 'angular'
 import uirouter from '@uirouter/angularjs'
 import 'angular-material'
+import 'angular-messages'
 import '../node_modules/angular-material/angular-material.min.css'
 import './app.scss'
 
 import coreModule from './core/CoreModule'
 import companyModule from './company/CompanyModule'
 
-function config($uiRouterProvider, $mdThemingProvider, $stateProvider) {
+/*@ngInject*/ function config($uiRouterProvider, $mdThemingProvider, $stateProvider) {
   // Setup MD default theme
   $mdThemingProvider.theme('default')
     .primaryPalette('teal').dark()
@@ -33,17 +34,17 @@ function config($uiRouterProvider, $mdThemingProvider, $stateProvider) {
   });
 }
 
-function run($transitions, $state) {
+/*@ngInject*/ function run($transitions, $state) {
   $transitions.onSuccess({
     to: 'main'
   }, () => { 
-    console.log('dafadsf')
     $state.go('company', { id: '' }) 
   })
 }
 
 const modules = [
   'ngMaterial',
+  'ngMessages',
   uirouter,
   coreModule.name,
   companyModule.name

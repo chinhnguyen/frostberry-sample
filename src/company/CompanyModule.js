@@ -1,14 +1,15 @@
 import * as angular from 'angular'
 
-import companiesView from './company.html'
-import companiesCtrl from './CompanyCtrl'
+import companyMasterView from './company-master.html'
+import companyMasterCtrl from './CompanyMaster'
+import companyDetail from './CompanyDetail'
 
-function routes($stateProvider) {
+/*@ngInject*/ function routes($stateProvider) {
   $stateProvider.state('company', {
     url: '/company/{id:[0-9]*}',
-    controller: companiesCtrl.name,
+    controller: companyMasterCtrl.name,
     controllerAs: "$ctrl",
-    template: companiesView,
+    template: companyMasterView,
     title: 'Companies',
     params: {
       id: {
@@ -20,5 +21,6 @@ function routes($stateProvider) {
 
 export default angular
   .module('app.company', [])
-  .controller(companiesCtrl.name, companiesCtrl)
+  .controller(companyMasterCtrl.name, companyMasterCtrl)
+  .directive(companyDetail.name, () => new companyDetail.directive)
   .config(routes)

@@ -21,7 +21,7 @@ export class MasterDirective {
 }
 
 export class MasterCtrl {
-  constructor($scope, $state, $timeout) {
+  /*@ngInject*/ constructor($rootScope, $scope, $state, $timeout) {
     this.$scope = $scope
     this.$state = $state
     this.tableClass = ''
@@ -51,6 +51,10 @@ export class MasterCtrl {
         this.selected = params.id
         this.showDetail = !isEmpty(this.selected)
       })
+    })
+
+    $rootScope.$on('wbDetail.close', () => {
+        this.showDetail = false
     })
   }
 
@@ -119,5 +123,10 @@ export class MasterCtrl {
    */
   select(item) {
     this.$state.go('.', { id: item.id }, { notify: false })
+  }
+
+  add() {
+    
+    this.$state.go('.', { id: '' }, { notify: false })
   }
 }
