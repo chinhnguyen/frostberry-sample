@@ -22,6 +22,7 @@ export class MasterDirective {
 
 export class MasterCtrl {
   /*@ngInject*/ constructor($rootScope, $scope, $state, $timeout) {
+    this.$rootScope = $rootScope
     this.$scope = $scope
     this.$state = $state
     this.tableClass = ''
@@ -53,9 +54,7 @@ export class MasterCtrl {
       })
     })
 
-    $rootScope.$on('wbDetail.close', () => {
-        this.showDetail = false
-    })
+    $rootScope.$on('wbMasterDetail.closeDetail', () => this.showDetail = false)
   }
 
   async _getData(params) {
@@ -125,8 +124,9 @@ export class MasterCtrl {
     this.$state.go('.', { id: item.id }, { notify: false })
   }
 
-  add() {
-    
+  add() {    
     this.$state.go('.', { id: '' }, { notify: false })
+    this.showDetail = true
+    this.$rootScope.$broadcast('wbMasterDetail.new')
   }
 }

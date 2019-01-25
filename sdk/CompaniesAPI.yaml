@@ -1,0 +1,54 @@
+openapi: "3.0.1"
+info:
+  title: "CompaniesAPI"
+  version: "2019-01-25T15:47:38Z"
+servers:
+- url: "https://kldqjoene3.execute-api.eu-north-1.amazonaws.com/{basePath}"
+  variables:
+    basePath:
+      default: "/staging"
+paths:
+  /companies:
+    get:
+      operationId: "getCompanies"
+      responses:
+        200:
+          description: "200 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Companies"
+    options:
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+components:
+  schemas:
+    Company:
+      type: "object"
+      properties:
+        id:
+          type: "string"
+        name:
+          type: "string"
+    Empty:
+      title: "Empty Schema"
+      type: "object"
+    Companies:
+      type: "array"
+      items:
+        $ref: "#/components/schemas/Company"

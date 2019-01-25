@@ -19,6 +19,11 @@ class CompanyDetail {
 class CompanyDetailController extends DetailController {
   /*@ngInject*/ constructor($rootScope, $scope, $timeout, $mdDialog, $wbDialog) {
     super($rootScope, $scope, $timeout, $mdDialog, $wbDialog)
+    this.displayName = "Company"
+  }
+
+  newObject() {
+    return Promise.resolve({id: '', name: ''})
   }
 
   getObject(id) {

@@ -76,6 +76,16 @@ export class DetailController {
     $scope.$watch('$ctrl.id', () => { 
       $timeout(() => this.reload())
     })
+    $rootScope.$on('wbMasterDetail.new', () => {
+      $timeout(() => this.create())
+    })
+  }
+
+  /**
+   * Child class to override and provide new object creation logic.
+   */
+  newObject() {
+    return Promise.reject('Not implemented')
   }
 
   /**
@@ -106,7 +116,14 @@ export class DetailController {
    * Signal Master to close it's detail view.
    */
   async close() {
-    this.$rootScope.$broadcast('wbDetail.close')
+    this.$rootScope.$broadcast('wbMasterDetail.closeDetail')
+  }
+
+  /**
+   * 
+   */
+  async create() {
+    this.current = await this.newObject()
   }
 
   /**
@@ -125,7 +142,7 @@ export class DetailController {
       this.current = await this.getObject(this.id)
       this.status = 'ok'
     } catch (err) {
-      console.log(err)
+      this.$wbDialog.showErrorToast(`Could not load ${this.displayName}!`)
       this.status = 'error'
     } finally {
       this.$scope.$digest()
@@ -150,6 +167,7 @@ export class DetailController {
         this.$wbDialog.showSuccessToast(`${this.displayName} was saved!`)
         this.$form.$setPristine(true)
       } catch (err) {
+        console.log(err)
         this.$wbDialog.showErrorRetryToast(err, `Could not save ${this.displayName}.`, () => _save() )
       } finally {
         this.submitting = false
@@ -176,6 +194,7 @@ export class DetailController {
         this.$wbDialog.showSuccessToast(`${this.displayName} was deleted!`)
         this.$form.$setPristine(true)
       } catch (err) {
+        console.log(err)
         this.$wbDialog.showErrorRetryToast(err, `Could not delete ${this.displayName}.`, () => _delete())
       } finally {
         this.submitting = false
