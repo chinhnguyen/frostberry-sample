@@ -11,7 +11,7 @@ import companyModule from './company/CompanyModule'
 import { ApiClient } from 'frostberry-api'
 
 /*@ngInject*/ function config($uiRouterProvider, $mdThemingProvider, $stateProvider) {
-  ApiClient.instance.basePath = 'https://kldqjoene3.execute-api.eu-north-1.amazonaws.com/staging'
+  ApiClient.instance.basePath = 'https://o59j9u2t0k.execute-api.eu-north-1.amazonaws.com/staging'
   // Setup MD default theme
   $mdThemingProvider.theme('default')
     .primaryPalette('teal').dark()
