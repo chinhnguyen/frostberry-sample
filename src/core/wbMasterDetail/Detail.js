@@ -165,11 +165,11 @@ export class DetailController {
     const _save = async () => {
       this.submitting = true
       try {
-        await this.saveObject(this.current)
+        const res = await this.saveObject(this.current)
         this.$wbDialog.showSuccessToast(`${this.displayName} was saved!`)
         this.$form.$setPristine(true)
         this.$rootScope.$broadcast('wbMasterDetail.itemUpdated', { 
-          id: this.current.id 
+          id: this.current.id || res.id
         })
       } catch (err) {
         console.log(err)

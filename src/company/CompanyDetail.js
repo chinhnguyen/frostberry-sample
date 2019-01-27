@@ -39,9 +39,7 @@ class CompanyDetailController extends DetailController {
       delete obj.id
       return await this.$api.createCompany(obj)
     } else {
-      const updated = await this.$api.updateCompany(obj.id, obj)
-      console.log(updated)
-      return updated
+      return await this.$api.updateCompany(obj.id, obj)
     }
   }
 

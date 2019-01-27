@@ -1,7 +1,7 @@
 openapi: "3.0.1"
 info:
   title: "Companies"
-  version: "2019-01-27T20:26:02Z"
+  version: "2019-01-27T20:56:41Z"
 servers:
 - url: "https://o59j9u2t0k.execute-api.eu-north-1.amazonaws.com/{basePath}"
   variables:
@@ -62,8 +62,8 @@ paths:
         schema:
           type: "string"
       responses:
-        200:
-          description: "200 response"
+        204:
+          description: "204 response"
           headers:
             Access-Control-Allow-Origin:
               schema:
@@ -113,8 +113,8 @@ paths:
               $ref: "#/components/schemas/Company"
         required: true
       responses:
-        200:
-          description: "200 response"
+        201:
+          description: "201 response"
           headers:
             Access-Control-Allow-Origin:
               schema:
@@ -122,7 +122,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Empty"
+                $ref: "#/components/schemas/Company"
     options:
       responses:
         200:
