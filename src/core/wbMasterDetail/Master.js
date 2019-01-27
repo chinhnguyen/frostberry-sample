@@ -5,6 +5,31 @@ import { isEmpty } from 'lodash'
 import masterView from './master.html'
 import './master-detail.scss'
 
+import addButton from './master-add-button.html'
+import reloadButton from './master-reload-button.html'
+
+/**
+ * The add button to be used in master view's toolbar.
+ */
+export class MasterAddButton {
+  constructor() {
+    this.restrict = 'E'
+    this.replace = true
+    this.template = addButton
+  }
+}
+
+/**
+ * The reload button to be used in master view's toolbar.
+ */
+export class MasterReloadButton {
+  constructor() {
+    this.restrict = 'E'
+    this.replace = true
+    this.template = reloadButton
+  }
+}
+
 export class MasterDirective {
   constructor() {
     this.restrict = 'E'
@@ -111,8 +136,8 @@ export class MasterCtrl {
    * Call to reload the data, mostly for view to call.
    */
   reload() {
-    if (this.data) {
-      this.data.reload()
+    if (this.table) {
+      this.table.reload()
     }
   }
 
@@ -124,6 +149,9 @@ export class MasterCtrl {
     this.$state.go('.', { id: item.id }, { notify: false })
   }
 
+  /**
+   * Add new record.
+   */
   add() {    
     this.$state.go('.', { id: '' }, { notify: false })
     this.showDetail = true

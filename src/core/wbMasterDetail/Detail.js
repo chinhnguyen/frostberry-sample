@@ -1,8 +1,8 @@
 import { isEmpty } from 'lodash'
 import detailView from './detail.html'
-import saveButton from './save-button.html'
-import deleteButton from './delete-button.html'
-import closeButton from './close-button.html'
+import saveButton from './detail-save-button.html'
+import deleteButton from './detail-delete-button.html'
+import closeButton from './detail-close-button.html'
 
 /**
  * An object detail base directive, child class must provide
@@ -73,9 +73,9 @@ export class DetailController {
     this.displayName = 'item'
     this.current = null
     this.focusField = 'name'
-    $scope.$watch('$ctrl.id', () => { 
-      $timeout(() => this.reload())
-    })
+    // $scope.$watch('$ctrl.id', () => { 
+    //   $timeout(() => this.reload())
+    // })
     $rootScope.$on('wbMasterDetail.new', () => {
       $timeout(() => this.create())
     })
