@@ -1,16 +1,14 @@
 <div flex layout="row" ng-show="status!=='ok'">
   <div flex ng-show="status==='error'" class="loading-error" flex layout="column" layout-align="center center" ng-click="reload()">
-    <p>
-      <i class="fa fa-exclamation-triangle"></i>
-      <br />
-      <translate>{{errorMessage}}!</translate>
-      <br />
-      <translate>Touch to retry</translate>
-    </p>
+    <i class="fa fa-exclamation-triangle"></i>
+    <translate>Could not load data!</translate>
+    <md-button class="md-primary md-raised" ng-click="reload()">
+      Reload
+    </md-button>
   </div>
   <div flex ng-show="status==='empty'" class="loading-error" flex layout="column" layout-align="center center">
     <i class="fa fa-frown"></i>
-    <translate>{{emptyMessage}}</translate>
+    <translate>Could not load data!</translate>
     <md-button class="md-primary md-raised" ng-click="reload()">
       Reload
     </md-button>

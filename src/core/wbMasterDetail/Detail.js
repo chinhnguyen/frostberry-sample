@@ -63,7 +63,7 @@ export class DetailCloseButton {
  * }
  */
 export class DetailController {
-  /*@ngInject*/ constructor($rootScope, $scope, $timeout, $mdDialog, $wbDialog) {
+  /*@ngInject*/ constructor($rootScope, $scope, $state, $timeout, $mdDialog, $wbDialog) {
     this.$rootScope = $rootScope
     this.$scope = $scope
     this.$timeout = $timeout
@@ -73,12 +73,15 @@ export class DetailController {
     this.displayName = 'item'
     this.current = null
     this.focusField = 'name'
-    // $scope.$watch('$ctrl.id', () => { 
-    //   $timeout(() => this.reload())
-    // })
-    // $rootScope.$on('wbMasterDetail.new', () => {
-    //   $timeout(() => this.create())
-    // })
+    $scope.$watchCollection(() => $state.params, async params => {
+      if (params.id !== this.id) {
+        this.id = params.id
+        this.reload()
+      }
+    })
+    $rootScope.$on('wbMasterDetail.new', () => {
+      $timeout(() => this.create())
+    })
   }
 
   /**
@@ -120,7 +123,7 @@ export class DetailController {
   }
 
   /**
-   * 
+   * Create new object.
    */
   async create() {
     this.current = await this.newObject()
@@ -130,23 +133,22 @@ export class DetailController {
    * Called to reload the object with UI processing.
    */
   async reload() {
-    // // Make sure no duplication
-    // if (this.status === 'loading') {
-    //   return
-    // }
-
-    // // Mark as loading
-    // this.status = 'loading'
-    // this.current = null
-    // try {
-    //   this.current = await this.getObject(this.id)
-    //   this.status = 'ok'
-    // } catch (err) {
-    //   this.$wbDialog.showErrorToast(`Could not load ${this.displayName}!`)
-    //   this.status = 'error'
-    // } finally {
-    //   this.$scope.$digest()
-    // }
+    // Make sure no duplication
+    if (this.status === 'loading' || isEmpty(this.id)) {
+      return
+    }
+    // Mark as loading
+    this.status = 'loading'
+    this.current = null
+    try {
+      this.current = await this.getObject(this.id)
+      this.status = 'ok'
+    } catch (err) {
+      this.$wbDialog.showErrorToast(`Could not load ${this.displayName}!`)
+      this.status = 'error'
+    } finally {
+      this.$scope.$digest()
+    }
   }
 
   /**

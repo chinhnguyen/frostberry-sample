@@ -6,7 +6,7 @@ import companyDetail from './CompanyDetail'
 
 /*@ngInject*/ function routes($stateProvider) {
   $stateProvider.state('company', {
-    url: '/company/{id:[0-9]*}',
+    url: '/company/{id:[0-9a-zA-Z\-]*}',
     controller: companyMasterCtrl.name,
     controllerAs: "$ctrl",
     template: companyMasterView,

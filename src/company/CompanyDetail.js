@@ -1,6 +1,5 @@
 import { DetailController } from '../core/wbMasterDetail/Detail'
 import template from './company-detail.html'
-// import { StoreApi } from 'kiolyn-api'
 
 class CompanyDetail {
   constructor() {
@@ -17,26 +16,26 @@ class CompanyDetail {
 }
 
 class CompanyDetailController extends DetailController {
-  /*@ngInject*/ constructor($rootScope, $scope, $timeout, $mdDialog, $wbDialog) {
-    super($rootScope, $scope, $timeout, $mdDialog, $wbDialog)
+  /*@ngInject*/ constructor($rootScope, $scope, $state, $timeout, $mdDialog, $wbDialog, $api) {
+    super($rootScope, $scope, $state, $timeout, $mdDialog, $wbDialog, $api)
     this.displayName = "Company"
   }
 
-  newObject() {
-    return Promise.resolve({id: '', name: ''})
-  }
+  // newObject() {
+  //   return Promise.resolve({id: '', name: ''})
+  // }
 
   getObject(id) {
     return Promise.resolve({id: '123', name: '456'})
   }
 
-  saveObject(obj) {
-    return Promise.resolve({})
-  }
+  // saveObject(obj) {
+  //   return Promise.resolve({})
+  // }
 
-  deleteObject(id) {
-    return Promise.resolve({})
-  }
+  // deleteObject(id) {
+  //   return Promise.resolve({})
+  // }
 }
 
 export default {
