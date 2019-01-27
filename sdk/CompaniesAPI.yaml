@@ -1,7 +1,7 @@
 openapi: "3.0.1"
 info:
   title: "Companies"
-  version: "2019-01-27T16:25:16Z"
+  version: "2019-01-27T20:26:02Z"
 servers:
 - url: "https://o59j9u2t0k.execute-api.eu-north-1.amazonaws.com/{basePath}"
   variables:
@@ -28,6 +28,50 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Company"
+    post:
+      operationId: "updateCompany"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Company"
+        required: true
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+    delete:
+      operationId: "deleteCompany"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
     options:
       responses:
         200:
@@ -60,6 +104,25 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Companies"
+    put:
+      operationId: "createCompany"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Company"
+        required: true
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
     options:
       responses:
         200:

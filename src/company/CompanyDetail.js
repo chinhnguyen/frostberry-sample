@@ -1,3 +1,4 @@
+import { isEmpty } from 'lodash'
 import { DetailController } from '../core/wbMasterDetail/Detail'
 import template from './company-detail.html'
 
@@ -22,21 +23,31 @@ class CompanyDetailController extends DetailController {
     this.displayName = "Company"
   }
 
-  // newObject() {
-  //   return Promise.resolve({id: '', name: ''})
-  // }
+  newObject() {
+    return Promise.resolve({
+      id: '', 
+      name: ''
+    })
+  }
 
   async getObject(id) {
     return await this.$api.getCompany(id)
   }
 
-  // saveObject(obj) {
-  //   return Promise.resolve({})
-  // }
+  async saveObject(obj) {
+    if (isEmpty(obj.id)) {
+      delete obj.id
+      return await this.$api.createCompany(obj)
+    } else {
+      const updated = await this.$api.updateCompany(obj.id, obj)
+      console.log(updated)
+      return updated
+    }
+  }
 
-  // deleteObject(id) {
-  //   return Promise.resolve({})
-  // }
+  async deleteObject(id) {
+    return await this.$api.deleteCompany(id)
+  }
 }
 
 export default {

@@ -80,6 +80,16 @@ export class MasterCtrl {
     })
 
     $rootScope.$on('wbMasterDetail.closeDetail', () => this.showDetail = false)
+    $rootScope.$on('wbMasterDetail.itemDeleted', () => { 
+      this.showDetail = false
+      this.selected = null
+      this.reload()
+    })
+    $rootScope.$on('wbMasterDetail.itemUpdated', (event, item) => { 
+      this.reload()
+      console.log(item)
+      this.selected = item.id
+    })
   }
 
   async _getData(params) {

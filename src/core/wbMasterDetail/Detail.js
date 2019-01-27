@@ -168,6 +168,9 @@ export class DetailController {
         await this.saveObject(this.current)
         this.$wbDialog.showSuccessToast(`${this.displayName} was saved!`)
         this.$form.$setPristine(true)
+        this.$rootScope.$broadcast('wbMasterDetail.itemUpdated', { 
+          id: this.current.id 
+        })
       } catch (err) {
         console.log(err)
         this.$wbDialog.showErrorRetryToast(err, `Could not save ${this.displayName}.`, () => _save() )
@@ -195,6 +198,7 @@ export class DetailController {
         await this.deleteObject(this.current.id)
         this.$wbDialog.showSuccessToast(`${this.displayName} was deleted!`)
         this.$form.$setPristine(true)
+        this.$rootScope.$broadcast('wbMasterDetail.itemDeleted', { id: this.current.id })
       } catch (err) {
         console.log(err)
         this.$wbDialog.showErrorRetryToast(err, `Could not delete ${this.displayName}.`, () => _delete())

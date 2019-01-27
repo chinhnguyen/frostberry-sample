@@ -38,7 +38,7 @@ import { ApiClient, DefaultApi } from 'frostberry-api'
 }
 
 /*@ngInject*/ function run($transitions, $state, $trace) {
-  $trace.enable('TRANSITION');
+  // $trace.enable('TRANSITION');
   $transitions.onSuccess({
     to: 'main'
   }, () => { 
