@@ -50,13 +50,14 @@ export class MasterCtrl {
     this.$rootScope = $rootScope
     this.$scope = $scope
     this.$state = $state
+    this.$timeout = $timeout
     this.tableClass = ''
 
     this.status = 'ok'
     this.selected = null
     this.filterValues = []
 
-    this.showDetail = false
+    this.showDetail = null
 
     this.summary = {}
     // this.pagination = {
@@ -75,7 +76,9 @@ export class MasterCtrl {
     $scope.$watchCollection(() => $state.params, async params => {
       $timeout(() => {
         this.selected = params.id
-        this.showDetail = !isEmpty(this.selected)
+        if (!this.showDetail) {
+          this.showDetail = !isEmpty(this.selected)
+        }
       })
     })
 
@@ -87,7 +90,6 @@ export class MasterCtrl {
     })
     $rootScope.$on('wbMasterDetail.itemUpdated', (event, item) => { 
       this.reload()
-      console.log(item)
       this.selected = item.id
     })
   }
@@ -164,7 +166,9 @@ export class MasterCtrl {
    */
   add() {    
     this.$state.go('.', { id: '' }, { notify: false })
-    this.showDetail = true
-    this.$rootScope.$broadcast('wbMasterDetail.new')
+    this.$timeout(() => {
+      this.showDetail = true
+      this.$rootScope.$broadcast('wbMasterDetail.new')
+    }, 100)
   }
 }

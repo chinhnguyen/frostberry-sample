@@ -126,7 +126,10 @@ export class DetailController {
    * Create new object.
    */
   async create() {
-    this.current = await this.newObject()
+    this.status = 'ok'
+    const obj = await this.newObject()
+    delete obj.id
+    this.current = obj
   }
 
   /**
@@ -166,11 +169,15 @@ export class DetailController {
       this.submitting = true
       try {
         const res = await this.saveObject(this.current)
+        if (res) { // Create new requires ID update
+          this.current.id = res.id
+        }
         this.$wbDialog.showSuccessToast(`${this.displayName} was saved!`)
         this.$form.$setPristine(true)
         this.$rootScope.$broadcast('wbMasterDetail.itemUpdated', { 
-          id: this.current.id || res.id
+          id: this.current.id
         })
+        
       } catch (err) {
         console.log(err)
         this.$wbDialog.showErrorRetryToast(err, `Could not save ${this.displayName}.`, () => _save() )
