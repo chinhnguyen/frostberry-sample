@@ -41,7 +41,7 @@ module.exports = (_, argv) => {
         }
       ]
     },
-    devtool: 'inline-source-map',
+    // devtool: 'inline-source-map',
     plugins: [
       new CleanWebpackPlugin([
         'dist'
