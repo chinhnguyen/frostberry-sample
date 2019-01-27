@@ -18,6 +18,7 @@ class CompanyDetail {
 class CompanyDetailController extends DetailController {
   /*@ngInject*/ constructor($rootScope, $scope, $state, $timeout, $mdDialog, $wbDialog, $api) {
     super($rootScope, $scope, $state, $timeout, $mdDialog, $wbDialog, $api)
+    this.$api = $api
     this.displayName = "Company"
   }
 
@@ -25,8 +26,8 @@ class CompanyDetailController extends DetailController {
   //   return Promise.resolve({id: '', name: ''})
   // }
 
-  getObject(id) {
-    return Promise.resolve({id: '123', name: '456'})
+  async getObject(id) {
+    return await this.$api.getCompany(id)
   }
 
   // saveObject(obj) {
