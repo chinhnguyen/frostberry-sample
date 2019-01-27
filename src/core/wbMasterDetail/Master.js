@@ -99,12 +99,8 @@ export class MasterCtrl {
     if (this.status === 'loading') {
       return
     }
-    //   console.log(params)
-    // Clear the current selected item
-    this.selected = null
     // Mark loading state
     this.status = 'loading'
-
     try {
       let rows = null
       const res = await this.list(this.filterValues, params)
@@ -166,9 +162,7 @@ export class MasterCtrl {
    */
   add() {    
     this.$state.go('.', { id: '' }, { notify: false })
-    this.$timeout(() => {
-      this.showDetail = true
-      this.$rootScope.$broadcast('wbMasterDetail.new')
-    }, 100)
+    this.showDetail = true
+    this.$rootScope.$broadcast('wbMasterDetail.new')
   }
 }
