@@ -1,14 +1,13 @@
 import { MasterCtrl } from '../core/wbMasterDetail/Master'
-import { DefaultApi } from 'frostberry-api'
 
 class CompaniesController extends MasterCtrl {
-  /*@ngInject*/ constructor($rootScope, $scope, $state, $timeout) {
+  /*@ngInject*/ constructor($rootScope, $scope, $state, $timeout, $api) {
     super($rootScope, $scope, $state, $timeout)
+    this.$api = $api
   }
 
-  async list(filters, params) {
-    const api = new DefaultApi()
-    return await api.getCompanies()
+  async list(filters, params) {    
+    return await this.$api.getCompanies()
   }
 }
 

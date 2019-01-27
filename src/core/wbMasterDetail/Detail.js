@@ -76,9 +76,9 @@ export class DetailController {
     // $scope.$watch('$ctrl.id', () => { 
     //   $timeout(() => this.reload())
     // })
-    $rootScope.$on('wbMasterDetail.new', () => {
-      $timeout(() => this.create())
-    })
+    // $rootScope.$on('wbMasterDetail.new', () => {
+    //   $timeout(() => this.create())
+    // })
   }
 
   /**
@@ -130,23 +130,23 @@ export class DetailController {
    * Called to reload the object with UI processing.
    */
   async reload() {
-    // Make sure no duplication
-    if (this.status === 'loading') {
-      return
-    }
+    // // Make sure no duplication
+    // if (this.status === 'loading') {
+    //   return
+    // }
 
-    // Mark as loading
-    this.status = 'loading'
-    this.current = null
-    try {
-      this.current = await this.getObject(this.id)
-      this.status = 'ok'
-    } catch (err) {
-      this.$wbDialog.showErrorToast(`Could not load ${this.displayName}!`)
-      this.status = 'error'
-    } finally {
-      this.$scope.$digest()
-    }
+    // // Mark as loading
+    // this.status = 'loading'
+    // this.current = null
+    // try {
+    //   this.current = await this.getObject(this.id)
+    //   this.status = 'ok'
+    // } catch (err) {
+    //   this.$wbDialog.showErrorToast(`Could not load ${this.displayName}!`)
+    //   this.status = 'error'
+    // } finally {
+    //   this.$scope.$digest()
+    // }
   }
 
   /**

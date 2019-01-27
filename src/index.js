@@ -8,7 +8,7 @@ import './app.scss'
 import coreModule from './core/CoreModule'
 import companyModule from './company/CompanyModule'
 
-import { ApiClient } from 'frostberry-api'
+import { ApiClient, DefaultApi } from 'frostberry-api'
 
 /*@ngInject*/ function config($uiRouterProvider, $mdThemingProvider, $stateProvider) {
   ApiClient.instance.basePath = 'https://o59j9u2t0k.execute-api.eu-north-1.amazonaws.com/staging'
@@ -31,13 +31,14 @@ import { ApiClient } from 'frostberry-api'
     url: ''
   })
 
-  const $urlService = $uiRouterProvider.urlService;
-  $urlService.rules.otherwise({
-    state: 'main'
-  });
+  // const $urlService = $uiRouterProvider.urlService;
+  // $urlService.rules.otherwise({
+  //   state: 'main'
+  // });
 }
 
-/*@ngInject*/ function run($transitions, $state) {
+/*@ngInject*/ function run($transitions, $state, $trace) {
+  $trace.enable('TRANSITION');
   $transitions.onSuccess({
     to: 'main'
   }, () => { 
@@ -57,4 +58,5 @@ export default angular
   .module('app', modules)
   .config(config)
   .run(run)
+  .service('$api', () => new DefaultApi)
   .name

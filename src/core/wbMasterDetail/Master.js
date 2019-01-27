@@ -72,12 +72,12 @@ export class MasterCtrl {
         getData: params => this._getData(params)
       })
 
-    $scope.$watchCollection(() => $state.params, async params => {
-      $timeout(() => {
-        this.selected = params.id
-        this.showDetail = !isEmpty(this.selected)
-      })
-    })
+    // $scope.$watchCollection(() => $state.params, async params => {
+    //   $timeout(() => {
+    //     this.selected = params.id
+    //     this.showDetail = !isEmpty(this.selected)
+    //   })
+    // })
 
     $rootScope.$on('wbMasterDetail.closeDetail', () => this.showDetail = false)
   }

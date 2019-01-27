@@ -3,7 +3,10 @@
     <md-toolbar ng-disabled="$ctrl.status==='ok'" layout="row" layout-align="end center">
       <div ng-transclude="filters"></div>
       <span flex></span>
-      <div ng-transclude="actions"></div>
+      <div ng-transclude="actions">
+        <master-add-button></master-add-button>
+        <master-reload-button></master-reload-button>      
+      </div>
     </md-toolbar>
     <md-divider></md-divider>
     <div class="wb-table-header" ng-show="$ctrl.status==='ok'" ng-transclude="header"></div>
