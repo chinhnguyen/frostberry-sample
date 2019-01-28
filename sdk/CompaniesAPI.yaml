@@ -1,7 +1,7 @@
 openapi: "3.0.1"
 info:
   title: "Companies"
-  version: "2019-01-27T20:56:41Z"
+  version: "2019-01-28T09:25:49Z"
 servers:
 - url: "https://o59j9u2t0k.execute-api.eu-north-1.amazonaws.com/{basePath}"
   variables:
@@ -150,6 +150,12 @@ components:
           type: "string"
         name:
           type: "string"
+        phone:
+          type: "string"
+        address:
+          type: "string"
+        employees:
+          type: "number"
     Empty:
       title: "Empty Schema"
       type: "object"

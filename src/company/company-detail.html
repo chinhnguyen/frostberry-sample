@@ -17,6 +17,25 @@
             </div>
           </md-input-container>
         </div>
+        <div layout-sm="column" layout-gt-sm="row">
+          <md-input-container flex>
+            <label>Address</label>
+            <input name="address" type="text" ng-model="$ctrl.current.address"></input>
+          </md-input-container>
+          <span hide-sm class="form-h-sep"></span>
+          <md-input-container flex>
+            <label>Phone</label>
+            <input name="phone" type="text" ng-model="$ctrl.current.phone"></input>
+          </md-input-container>
+        </div>
+        <div layout-sm="column" layout-gt-sm="row">
+          <md-input-container flex>
+            <label>Number of employees</label>
+            <input name="number_of_employee" type="number" ng-model="$ctrl.current.employees"></input>
+          </md-input-container>
+          <span hide-sm class="form-h-sep"></span>
+          <span flex hide-sm></span>
+        </div>
       </md-content>
     </form>
   </detail-content>
