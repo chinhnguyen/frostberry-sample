@@ -31,10 +31,10 @@ import { ApiClient, DefaultApi } from 'frostberry-api'
     url: ''
   })
 
-  // const $urlService = $uiRouterProvider.urlService;
-  // $urlService.rules.otherwise({
-  //   state: 'main'
-  // });
+  const $urlService = $uiRouterProvider.urlService;
+  $urlService.rules.otherwise({
+    state: 'main'
+  });
 }
 
 /*@ngInject*/ function run($transitions, $state, $trace) {
