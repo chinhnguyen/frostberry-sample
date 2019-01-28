@@ -5,8 +5,8 @@
         <tr>
           <th class="col-free">Name</th>
           <th class="col-free">Address</th>
-          <th class="col-free" hide-sm>Phone</th>
-          <th class="col-free" hide-sm>Number of Employees</th>
+          <th class="col-free" hide-sm ng-hide="$ctrl.showDetail">Phone</th>
+          <th class="col-free" hide-sm ng-hide="$ctrl.showDetail">Number of Employees</th>
         </tr>
       <thead>
     </table>
@@ -17,8 +17,8 @@
         <tr ng-repeat="r in $data" ng-class="{selected:r.id===$ctrl.selected}" ng-click="$ctrl.select(r)">
           <td class="col-free">{{r.name}}</td>
           <td class="col-free">{{r.address}}</td>
-          <td class="col-free" hide-sm>{{r.phone}}</td>
-          <td class="col-free" hide-sm>{{r.employees}}</td>
+          <td class="col-free" hide-sm ng-hide="$ctrl.showDetail">{{r.phone}}</td>
+          <td class="col-free" hide-sm ng-hide="$ctrl.showDetail">{{r.employees}}</td>
         </tr>
       </tbody>
     </table>
