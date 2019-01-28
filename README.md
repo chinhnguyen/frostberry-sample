@@ -2,8 +2,11 @@
 
 ## Description
 Sample project to demonstrate the Master/Detail UI using Material design specialized for [AngularJS](https://material.angularjs.org/latest/). 
+
 Bundled with Webpack and deployed with [S3](https://aws.amazon.com/s3/).
-The backend is built upon [DynamoDB](https://aws.amazon.com/dynamodb/) with [Lambda](https://aws.amazon.com/lambda/) and [API Gateway](https://aws.amazon.com/api-gateway/).
+
+The backend is totally serverless with [DynamoDB](https://aws.amazon.com/dynamodb/) and [Lambda](https://aws.amazon.com/lambda/) and [API Gateway](https://aws.amazon.com/api-gateway/).
+
 Client's SDK is generated with [OpenAPI3](https://github.com/OAI/OpenAPI-Specification) and [code generator](https://github.com/OpenAPITools/openapi-generator).
 
 The live project can be found [here](http://frostberry-sample.s3-website.eu-north-1.amazonaws.com).
